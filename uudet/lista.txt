@@ -1,0 +1,5 @@
+pirvola.plv pirvolagfx.bmp pirvolabg.bmp
+ekolos.plv ekolosgfx.bmp ekolosbg.bmp
+likvidus.plv likvigfx.bmp likvibg.bmp
+metarola.plv metarolagfx.bmp metarolabg.bmp
+nagolipoli.plv nagoligfx.bmp nagolibg.bmp

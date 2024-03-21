@@ -1,0 +1,154 @@
+<!--
+pikku-ukot mesoo v1.0 aseskripti
+
+- nakymaton
+- kierra-pelaaja
+- vahinko (integer) : 1
+- lahtonopeus (float) (float) : 2.0 0.0
+- tulinopeus (float) : 0.5
+- lipas (integer) : 30
+- latausaika (float) : 1.0
+- kumi (float) : 0.0
+- kumiluku (integer) : 0
+- rajahdys (float) : 0.0
+- rajahdys-ajastus (float) : 0.0
+- efekti (constant) : null
+- painokerroin (float) : 1.0
+- sirpaleita (integer) (efu) : 0 null
+- haku (float) : 0.0
+- haku-ajastus (float) : 0.0
+- kitka (float) (float) : 1.0 1.0
+- vari (byte) (byte) (byte) : 255 255 255
+- tarkkuus (float) : 0.0
+- lukumaara (integer) : 1
+- aani-laukaus-id (integer) (integer) : 18 18
+- aani-aktiv-id (integer) (integer) : -1 -1
+- aani-seina-id (integer) (integer) : -1 -1
+
+ekana pitää olla aseiden määrä
+-->
+
+<efu:> Seeker2
+	efekti kipinasuihku
+	lahtonopeus 0.0 0.0
+	tarkkuus 0
+	rajahdys 99
+	painokerroin 0.0
+	kitka 0.97 0.97
+	haku 0.4
+	haku-ajastus 0.0
+	aani-laukaus-id 24 24
+
+<efu:> Sirpale
+	vahinko 3
+	rajahdys 2
+	lahtonopeus 1.0 0.5
+	tarkkuus 256.0
+	lukumaara 12
+	aani-fire-id -1 -1
+
+<ase:> Minitykki
+	vahinko 99
+	rajahdys 1.3
+	lukumaara 3
+	painokerroin 0
+	tarkkuus 1.5
+	lahtonopeus 4.0 1.0
+	nakymaton
+	tulinopeus 0.09
+	aani-seina-id 13 16
+
+<ase:> Kranu
+	kierra-pelaaja
+	lahtonopeus 2.7 0.4
+	tulinopeus 0.7
+	sirpaleita 1 sirpale
+	kumi 0.4
+	lukumaara 10
+	rajahdys-ajastus 2.0
+	rajahdys 6
+	aani-laukaus-id 20 20
+
+<ase:> Ohjus
+	efekti kipinasuihku
+	lahtonopeus 0.5 0.0
+	rajahdys 19
+	painokerroin 0.0
+	kitka 1.015 1.015
+	tulinopeus 3.0
+	aani-laukaus-id 24 24
+
+<ase:> Seeker
+	lukumaara 1
+	tulinopeus 1.8
+	kierra-pelaaja
+	lahtonopeus 3.0 0.0
+	kumi 0.8
+	sirpaleita 1 Seeker2
+	rajahdys-ajastus 1.0
+	rajahdys 0
+
+<efu:> Tyk4
+	nakymaton
+	kierra-pelaaja
+	lukumaara 1
+	tarkkuus 256.0
+	lahtonopeus 4.0 2.0
+	kumi 1.0
+	kitka 0.8 0.8
+	rajahdys-ajastus 0.3
+	rajahdys 6
+	aani-laukaus-id -1 -1
+	painokerroin 2.0
+
+<efu:> Tyk3
+	kierra-pelaaja
+	lukumaara 1
+	tarkkuus 256.0
+	lahtonopeus 4.0 2.0
+	kumi 1.0
+	kitka 0.8 0.8
+	rajahdys-ajastus 0.3
+	rajahdys 6.5
+	painokerroin 2.0
+	aani-laukaus-id -1 -1
+	sirpaleita 1 Tyk4
+
+<efu:> Tyk2
+	nakymaton
+	kierra-pelaaja
+	lukumaara 4
+	tarkkuus 256.0
+	lahtonopeus 6.0 3.0
+	kumi 1.0
+	kitka 0.8 0.8
+	rajahdys-ajastus 1.0
+	rajahdys 7
+	painokerroin 2.0
+	aani-laukaus-id -1 -1
+	sirpaleita 1 Tyk3
+
+<ase:> Moerssaein
+	efekti kipinaroiske
+	painokerroin 0.0
+	lahtonopeus 3.5 0.7
+	tarkkuus 0.7
+	lukumaara 6
+	rajahdys 6
+	tulinopeus 3.0
+	aani-laukaus-id 25 25
+
+<ase:> Tykisto
+	nakymaton
+	kierra-pelaaja
+	lukumaara 3
+	tulinopeus 12
+	tarkkuus 256.0
+	lahtonopeus 0.0 0.0
+	kumi 1.0
+	kitka 0.8 0.8
+	rajahdys-ajastus 10.0
+	painokerroin 2.0
+	sirpaleita 1 Tyk2
+	aani-laukaus-id 23 23
+	aani-aktiv-id 22 22
