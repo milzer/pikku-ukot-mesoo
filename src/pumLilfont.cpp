@@ -1,6 +1,7 @@
 #include "pumLilfont.h"
 
-unsigned char szLilFontData[1280] = {
+unsigned char szLilFontData[1280] =
+{
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -109,10 +110,10 @@ unsigned char szLilFontData[1280] = {
     0, 0, 0, 0, 0,   /*  */
     0, 0, 0, 0, 0, /* From here on are characters that are not used (scandinavian etc.) */
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    9, 0, 14, 9, 14,  /* „ */
+    9, 0, 14, 9, 14,  /* ï¿½ */
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    9, 0, 6, 9, 6, /* ” */
+    9, 0, 6, 9, 6, /* ï¿½ */
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -125,27 +126,52 @@ unsigned char szLilFontData[1280] = {
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 };
 
-void LilChar(int x, int y, char c, DWORD col, DWORD *pSrf)
+void LilChar(int x, int y, char c, DWORD col, DWORD* pSrf)
 {
-    if (y > ScreenHeight - 1) return;
-    if (y < -3) return;
-    if (x > ScreenWidth - 1) return;
-    if (x < -3) return;
+    if (y > ScreenHeight - 1)
+    {
+        return;
+    }
+    if (y < -3)
+    {
+        return;
+    }
+    if (x > ScreenWidth - 1)
+    {
+        return;
+    }
+    if (x < -3)
+    {
+        return;
+    }
 
     int i;
     char tmp;
 
-    for (i = 0; i < 5; i++) {
-        tmp = szLilFontData[ c * 5 + i ];
-        if ((tmp&1) == 1 && _OnScreen(x, y + i)) pSrf[(y+i) * ScreenWidth + x ] = col;
-        if ((tmp&2) == 2 && _OnScreen(x + 1, y + i)) pSrf[(y+i) * ScreenWidth + (x+1)] = col;
-        if ((tmp&4) == 4 && _OnScreen(x + 2, y + i)) pSrf[(y+i) * ScreenWidth + (x+2)] = col;
-        if ((tmp&8) == 8 && _OnScreen(x + 3, y + i)) pSrf[(y+i) * ScreenWidth + (x+3)] = col;
+    for (i = 0; i < 5; i++)
+    {
+        tmp = szLilFontData[c * 5 + i];
+        if ((tmp & 1) == 1 && _OnScreen(x, y + i))
+        {
+            pSrf[(y + i) * ScreenWidth + x] = col;
+        }
+        if ((tmp & 2) == 2 && _OnScreen(x + 1, y + i))
+        {
+            pSrf[(y + i) * ScreenWidth + (x + 1)] = col;
+        }
+        if ((tmp & 4) == 4 && _OnScreen(x + 2, y + i))
+        {
+            pSrf[(y + i) * ScreenWidth + (x + 2)] = col;
+        }
+        if ((tmp & 8) == 8 && _OnScreen(x + 3, y + i))
+        {
+            pSrf[(y + i) * ScreenWidth + (x + 3)] = col;
+        }
     }
 
 }
 
-void LilStringCentered(int x, int y, char *s, DWORD col, DWORD *pSrf)
+void LilStringCentered(int x, int y, char* s, DWORD col, DWORD* pSrf)
 {
     int i, l;
 
@@ -154,20 +180,24 @@ void LilStringCentered(int x, int y, char *s, DWORD col, DWORD *pSrf)
     x -= (l * 5 / 2);
 
     for (i = 0; i < l; i++)
-        LilChar(x + (i*5), y, *s++, col, pSrf);
+    {
+        LilChar(x + (i * 5), y, *s++, col, pSrf);
+    }
 }
 
-void LilString(int x, int y, char *s, DWORD col, DWORD *pSrf)
+void LilString(int x, int y, char* s, DWORD col, DWORD* pSrf)
 {
     int i, l;
 
     l = strlen(s);
 
     for (i = 0; i < l; i++)
-        LilChar(x + (i*5), y, *s++, col, pSrf);
+    {
+        LilChar(x + (i * 5), y, *s++, col, pSrf);
+    }
 }
 
-void LilStringR(int x, int y, char *s, DWORD col, DWORD *pSrf)
+void LilStringR(int x, int y, char* s, DWORD col, DWORD* pSrf)
 {
     int i, l;
 
@@ -176,10 +206,12 @@ void LilStringR(int x, int y, char *s, DWORD col, DWORD *pSrf)
     x -= l * 5;
 
     for (i = 0; i < l; i++)
-        LilChar(x + (i*5), y, *s++, col, pSrf);
+    {
+        LilChar(x + (i * 5), y, *s++, col, pSrf);
+    }
 }
 
-void LilStringCenterX(int y, char *s, DWORD col, DWORD *pSrf)
+void LilStringCenterX(int y, char* s, DWORD col, DWORD* pSrf)
 {
     int i, l, x;
 
@@ -187,10 +219,12 @@ void LilStringCenterX(int y, char *s, DWORD col, DWORD *pSrf)
     x = 160 - (l * 5 / 2);
 
     for (i = 0; i < l; i++)
-        LilChar(x + (i*5), y, *s++, col, pSrf);
+    {
+        LilChar(x + (i * 5), y, *s++, col, pSrf);
+    }
 }
 
-void LilStringCenterXo(int y, char *s, DWORD col, DWORD *pSrf)
+void LilStringCenterXo(int y, char* s, DWORD col, DWORD* pSrf)
 {
     int l, x;
 

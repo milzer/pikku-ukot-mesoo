@@ -17,32 +17,31 @@ CpumApp theApp;
 
 int PASCAL WinMain(HINSTANCE hInstance,
                    HINSTANCE hPrevInstance,
-                   TCHAR *pCmdLine,
+                   TCHAR* pCmdLine,
                    int nCmdShow)
 {
     // Initialize DieselEngine
     {
-        DE_RETVAL       res = DE_OK;
+        DE_RETVAL res = DE_OK;
 
         theApp.SetAppTitle(_T("pum"));
 
         // Set Application resource IDs here
         theApp.SetResources(0, IDI_APPICON, 0);
 
-        SDE_DISPLAYMODE     mode;
+        SDE_DISPLAYMODE mode;
         mode.iWidth = 320;
         mode.iHeight = 200;
         mode.iRefresh = 0;
         mode.iBPP = 32;
 
-        DWORD dwStartupFlags =  0;
-//      dwStartupFlags |= DE_CREATEZBUFFER;
-//      dwStartupFlags |= DE_WINDOWED;
+        DWORD dwStartupFlags = 0;
 
         // Startup the engine. If derived class OnInitDone function failed,
         // return value is passed here
         res = theApp.Startup(NULL, &mode, dwStartupFlags);
-        if (res != DE_OK) {
+        if (res != DE_OK)
+        {
             ::MessageBox(NULL,
                          _T("Failed to start Application"),
                          _T("Fatal Error"),

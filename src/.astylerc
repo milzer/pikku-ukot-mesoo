@@ -1,0 +1,15 @@
+--style=allman
+--attach-closing-while
+--indent-switches
+--pad-oper
+--pad-comma
+--pad-header
+--unpad-brackets
+--squeeze-lines=2
+--squeeze-ws
+--align-pointer=type
+--align-reference=type
+--add-braces
+--attach-return-type
+--convert-tabs
+--max-code-length=119

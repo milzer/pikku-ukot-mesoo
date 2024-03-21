@@ -7,7 +7,7 @@
 #include "pumLevel.h"
 //#include "list.h"
 
-extern  DWORD           ParticlePalette[256];
+extern DWORD ParticlePalette[256];
 
 #define PRT_SPARK       0x0001
 #define PRT_FASTSPARK   0x0002
@@ -41,53 +41,52 @@ extern  DWORD           ParticlePalette[256];
 class CPumParticle
 {
 public:
-    CPumSysPointers     *m_SP;
+    CPumSysPointers* m_SP;
 
-    float               m_fXpos,
-    m_fYpos,
-    m_Acceleration,
-    m_Misc;
+    float m_fXpos;
+    float m_fYpos;
+    float m_Acceleration;
+    float m_Misc;
 
-    CDieselVector2      m_Vec;
+    CDieselVector2 m_Vec;
 
-    int                 m_iXpos,
-    m_iYpos,
-    m_Flags,
-    m_TTL,
-    m_Counter,
-    m_Countfreq;
+    int m_iXpos;
+    int m_iYpos;
+    int m_Flags;
+    int m_TTL;
+    int m_Counter;
+    int m_Countfreq;
 
-    char                m_Onscreen;
-    BYTE                m_Col;
+    char m_Onscreen;
+    BYTE m_Col;
 
-    inline void         Kill();
-    inline int          Update(float frameTime);
-    inline void         Draw(DWORD *pSurface);
-    inline void         DrawBlended(DWORD *pSurface);
-    inline void         Create(float x, float y, float i, float j, float accel, int lt, BYTE col, int fl, CPumSysPointers *sp);
+    inline void Kill();
+    inline int Update(float frameTime);
+    inline void Draw(DWORD* pSurface);
+    inline void DrawBlended(DWORD* pSurface);
+    inline void Create(float x, float y, float i, float j, float accel, int lt, BYTE col, int fl, CPumSysPointers* sp);
 
     CPumParticle();
     ~CPumParticle() {}
 };
 
 
-
 class CPumParticleSystem
 {
 protected:
-    int             m_Max,
-    m_Current;
+    int m_Max;
+    int m_Current;
 
-    CPumParticle    *m_Particles;
+    CPumParticle* m_Particles;
 
 public:
-    CPumSysPointers *m_SP;
+    CPumSysPointers* m_SP;
 
-    void            Add(float x, float y, float i, float j, float accel, float lt, BYTE col, int fl);
-    void            Update(float frameTime);
-    void            Draw(DWORD *pSurface);
-    void            DrawBlended(DWORD *pSurface);
-    void            Reset();
+    void Add(float x, float y, float i, float j, float accel, float lt, BYTE col, int fl);
+    void Update(float frameTime);
+    void Draw(DWORD* pSurface);
+    void DrawBlended(DWORD* pSurface);
+    void Reset();
 
     CPumParticleSystem(const int i);
     ~CPumParticleSystem();
@@ -95,9 +94,9 @@ public:
 
 
 void SetParticlePalette();
-void SpawnFlame(float x, float y, CPumSysPointers *sp);
+void SpawnFlame(float x, float y, CPumSysPointers* sp);
 void SpawnParticles(int type, float x, float y, float angle, float spread,
                     float minpower, float maxpower, float friction,
-                    int num, int lifetime, BYTE col, CPumSysPointers *sp);
+                    int num, int lifetime, BYTE col, CPumSysPointers* sp);
 
 #endif

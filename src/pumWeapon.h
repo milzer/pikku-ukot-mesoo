@@ -51,65 +51,65 @@
 class CPumWeapon
 {
 public:
-    CPumSysPointers *m_SP;
-    CPumWeapon      *m_Frag;
+    CPumSysPointers* m_SP;
+    CPumWeapon* m_Frag;
 
-    char            *m_Name;
-    DWORD           m_Col;
-    unsigned int    m_Flags;
+    char* m_Name;
+    DWORD m_Col;
+    unsigned int m_Flags;
 
-    float           m_Velocity,
-    m_VelSpread,
-    m_Bounce,
-    m_Blow,
-    m_WeightModifier,
-    m_Seeker,
-    m_FrictionX,
-    m_FrictionY,
-    m_Accuracy,
-    m_Firerate,
-    m_ReloadTime,
-    m_BlowTimer,
-    m_SeekTimer;
+    float m_Velocity;
+    float m_VelSpread;
+    float m_Bounce;
+    float m_Blow;
+    float m_WeightModifier;
+    float m_Seeker;
+    float m_FrictionX;
+    float m_FrictionY;
+    float m_Accuracy;
+    float m_Firerate;
+    float m_ReloadTime;
+    float m_BlowTimer;
+    float m_SeekTimer;
 
-    int             m_Count,
-    m_Damage,
-    m_Clip,
-    m_BounceCount,
-    m_SoundFireId[2],
-    m_SoundActivId[2],
-    m_SoundWallId[2],
-    m_Fragments;
+    int m_Count;
+    int m_Damage;
+    int m_Clip;
+    int m_BounceCount;
+    int m_SoundFireId[2];
+    int m_SoundActivId[2];
+    int m_SoundWallId[2];
+    int m_Fragments;
 
-    void            SetDefault();
-    void            SetDefault(const char *n);
+    void SetDefault();
+    void SetDefault(const char* n);
 
     CPumWeapon();
-    CPumWeapon(const char *n);
+    CPumWeapon(const char* n);
     ~CPumWeapon();
 };
 
 class CPumBullet : public CPumWeapon
 {
 public:
-    CPumSysPointers *m_SP;
-    CDieselVector2  m_Vec;
+    CPumSysPointers* m_SP;
+    CDieselVector2 m_Vec;
 
-    float           m_fXpos,
-    m_fYpos;
+    float m_fXpos;
+    float m_fYpos;
 
-    int             m_TTL,
-    m_iXpos,
-    m_iYpos;
+    int m_TTL;
+    int m_iXpos;
+    int m_iYpos;
 
-    char            m_Onscreen;
+    char m_Onscreen;
 
-    void            Activate(float frameTime);
-    void            GetWeaponInfo(CPumWeapon *w);
-    int             Update(float frameTime);
-    void            Kill();
-    void            Draw(DWORD *pSurface);
-    void            Create(float x, float y, float angle, CPumWeapon *w, CPumSysPointers *sp);
+    void Activate(float frameTime);
+    void GetWeaponInfo(CPumWeapon* w);
+    int Update(float frameTime);
+    void Kill();
+    void Draw(DWORD* pSurface);
+    void Create(float x, float y, float angle, CPumWeapon* w, CPumSysPointers* sp);
 
     CPumBullet() {};
     ~CPumBullet() {};
@@ -118,23 +118,23 @@ public:
 class CPumWeaponSystem
 {
 protected:
-    int             m_MaxB,
-    m_CurrentB;
+    int m_MaxB;
+    int m_CurrentB;
 
-    CPumBullet      *m_Bullets;
+    CPumBullet* m_Bullets;
 
 public:
-    int             m_MaxW;
+    int m_MaxW;
 
-    CPumSysPointers *m_SP;
-    CPumWeapon      *m_Weapons;
+    CPumSysPointers* m_SP;
+    CPumWeapon* m_Weapons;
 
-    CPumWeapon      *FindWeapon(const char *n);
-    void            LoadWeapons();
-    void            ShootB(float x, float y, float a, CPumPlayer *p, CPumWeapon *w);
-    void            UpdateB(float frameTime);
-    void            DrawB(DWORD *pSurface);
-    void            Reset();
+    CPumWeapon* FindWeapon(const char* n);
+    void LoadWeapons();
+    void ShootB(float x, float y, float a, CPumPlayer* p, CPumWeapon* w);
+    void UpdateB(float frameTime);
+    void DrawB(DWORD* pSurface);
+    void Reset();
 
     CPumWeaponSystem(const int i);
     ~CPumWeaponSystem();
