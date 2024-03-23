@@ -50,9 +50,32 @@ int CPixelApp::run()
             switch (event.type)
             {
                 case sf::Event::KeyPressed:
-                    if (event.key.code == sf::Keyboard::Escape)
+                    switch (event.key.code)
                     {
-                        m_window.close();
+                        case sf::Keyboard::Pause:
+                            m_paused = !m_paused;
+                            break;
+                        case sf::Keyboard::Escape:
+                            m_window.close();
+                            break;
+                        case sf::Keyboard::F:
+                        {
+                            const auto desktopMode = sf::VideoMode::getDesktopMode();
+                            m_window.create(desktopMode, m_title, sf::Style::Fullscreen);
+                            updatePixelsSpriteScale();
+                            break;
+                        }
+                        case sf::Keyboard::W:
+                        {
+                            const auto desktopMode = sf::VideoMode::getDesktopMode();
+                            m_window.create(desktopMode, m_title, sf::Style::Default);
+                            m_window.setSize({ 640u, 400u });
+                            m_window.setPosition({
+                                static_cast<int>((desktopMode.width - m_window.getSize().x) >> 1),
+                                static_cast<int>((desktopMode.height - m_window.getSize().y) >> 1)
+                            });
+                            break;
+                        }
                     }
                     break;
                 case sf::Event::Closed:
