@@ -6,13 +6,6 @@ CPixelApp::CPixelApp(const std::string& title, const sf::Uint16 width, const sf:
     m_pixels(m_pixelSize.x * m_pixelSize.y * 4)
 {
     m_window.create(sf::VideoMode(width * 2, height * 2), m_title, sf::Style::Default);
-
-    m_pixelsTexture.create(m_pixelSize.x, m_pixelSize.y);
-    m_pixelsTexture.setSmooth(false);
-
-    m_pixelsSprite.setTexture(m_pixelsTexture);
-
-    updatePixelsSpriteScale();
 }
 
 CPixelApp::~CPixelApp()
@@ -28,6 +21,15 @@ int CPixelApp::run()
     {
         return EXIT_FAILURE;
     }
+
+    sf::Texture screenTexture;
+    screenTexture.create(m_pixelSize.x, m_pixelSize.y);
+    screenTexture.setSmooth(false);
+
+    sf::Sprite screenSprite(screenTexture);
+
+    updateScreenSpriteScale(screenSprite);
+
 
     while (m_window.isOpen())
     {
@@ -62,7 +64,7 @@ int CPixelApp::run()
                         {
                             const auto desktopMode = sf::VideoMode::getDesktopMode();
                             m_window.create(desktopMode, m_title, sf::Style::Fullscreen);
-                            updatePixelsSpriteScale();
+                            updateScreenSpriteScale(screenSprite);
                             break;
                         }
                         case sf::Keyboard::W:
@@ -84,7 +86,7 @@ int CPixelApp::run()
                 case sf::Event::Resized:
                     sf::FloatRect visibleArea(0, 0, event.size.width, event.size.height);
                     m_window.setView(sf::View(visibleArea));
-                    updatePixelsSpriteScale();
+                    updateScreenSpriteScale(screenSprite);
                     break;
             }
         }
@@ -92,15 +94,15 @@ int CPixelApp::run()
         onUpdate(m_frameTime);
         onDraw();
 
-        m_pixelsTexture.update(m_pixels.data());
-        m_window.draw(m_pixelsSprite);
+        screenTexture.update(m_pixels.data());
+        m_window.draw(screenSprite);
         m_window.display();
     }
 
     return EXIT_SUCCESS;
 }
 
-void CPixelApp::updatePixelsSpriteScale()
+void CPixelApp::updateScreenSpriteScale(sf::Sprite& sprite)
 {
     const auto windowSize = m_window.getSize();
 
@@ -108,10 +110,10 @@ void CPixelApp::updatePixelsSpriteScale()
     float scaleY = static_cast<float>(windowSize.y) / m_pixelSize.y;
     float scaleToFit = std::min(scaleX, scaleY);
 
-    m_pixelsSprite.setScale(scaleToFit, scaleToFit);
+    sprite.setScale(scaleToFit, scaleToFit);
 
     float posX = (windowSize.x - (m_pixelSize.x * scaleToFit)) / 2.0f;
     float posY = (windowSize.y - (m_pixelSize.y * scaleToFit)) / 2.0f;
 
-    m_pixelsSprite.setPosition(posX, posY);
+    sprite.setPosition(posX, posY);
 }

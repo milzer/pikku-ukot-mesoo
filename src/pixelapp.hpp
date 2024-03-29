@@ -10,8 +10,6 @@ protected:
     std::vector<sf::Uint8> m_pixels;
 
     sf::RenderWindow m_window;
-    sf::Sprite m_pixelsSprite;
-    sf::Texture m_pixelsTexture;
 
     sf::Time m_frameTime;
     bool m_paused = false;
@@ -29,5 +27,5 @@ protected:
     virtual void onDraw() = 0;
 
 private:
-    void updatePixelsSpriteScale();
+    void updateScreenSpriteScale(sf::Sprite& sprite);
 };
