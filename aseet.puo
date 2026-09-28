@@ -25,14 +25,14 @@ pikku-ukot mesoo v1.0 aseskripti
 - aani-aktiv-id (integer) (integer) : -1 -1
 - aani-seina-id (integer) (integer) : -1 -1
 
-ekana pitää olla aseiden määrä
+ekana pitï¿½ï¿½ olla aseiden mï¿½ï¿½rï¿½
 -->
 
 <efu:> Seeker2
 	efekti kipinasuihku
 	lahtonopeus 0.0 0.0
 	tarkkuus 0
-	rajahdys 99
+	rajahdys 6
 	painokerroin 0.0
 	kitka 0.97 0.97
 	haku 0.4
@@ -48,7 +48,7 @@ ekana pitää olla aseiden määrä
 	aani-fire-id -1 -1
 
 <ase:> Minitykki
-	vahinko 99
+	vahinko 3
 	rajahdys 1.3
 	lukumaara 3
 	painokerroin 0
@@ -64,7 +64,7 @@ ekana pitää olla aseiden määrä
 	tulinopeus 0.7
 	sirpaleita 1 sirpale
 	kumi 0.4
-	lukumaara 10
+	lukumaara 1
 	rajahdys-ajastus 2.0
 	rajahdys 6
 	aani-laukaus-id 20 20
@@ -77,6 +77,19 @@ ekana pitää olla aseiden määrä
 	kitka 1.015 1.015
 	tulinopeus 3.0
 	aani-laukaus-id 24 24
+
+<ase:> Kokkareet
+	lahtonopeus 3.0 0.4
+	tulinopeus 2.5
+	tarkkuus 5
+	kumi 0.6
+	kumiluku 8
+	lukumaara 8
+	haku 0.05
+	haku-ajastus 2.0
+	rajahdys-ajastus 10.0
+	aani-laukaus-id 21 21
+	rajahdys 4
 
 <ase:> Seeker
 	lukumaara 1
@@ -137,6 +150,29 @@ ekana pitää olla aseiden määrä
 	rajahdys 6
 	tulinopeus 3.0
 	aani-laukaus-id 25 25
+
+<ase:> Miina
+	painokerroin 0.0
+	kumi 1.0
+	kumiluku 10
+	lahtonopeus 1.8 1.0
+	tarkkuus 16
+	lukumaara 28
+	kitka 0.95 0.95
+	haku 0.02
+	haku-ajastus 10.0
+	aani-laukaus-id 19 19
+	rajahdys-ajastus 20.0
+	rajahdys 2
+	tulinopeus 5.0
+
+<ase:> Polttopullo
+	rajahdys 4
+	tuli
+	lahtonopeus 3.0 0.4
+	tarkkuus 1.0
+	aani-laukaus-id -1 -1
+	aani-aktiv-id 17 17
 
 <ase:> Tykisto
 	nakymaton
