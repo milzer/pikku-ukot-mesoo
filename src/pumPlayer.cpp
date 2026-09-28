@@ -196,6 +196,9 @@ void CPumPlayer::UpdateControls(DWORD* pSrf)
         }
     }
 
+    // Turning and aiming can leave the angle at 256+, past the end of the sin/cos tables
+    m_iAngle &= 255;
+
     if (m_KeyBuffer[PLR_C_CHANGE] == TRUE && m_FireDelay < 0.0f)
     {
         m_WeaponShow = 0.4f;
