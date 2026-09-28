@@ -8,6 +8,9 @@
 
 --------------------------------------------------------------------------------------*/
 
+#include <SDL3/SDL_main.h>
+#include <SDL3/SDL_messagebox.h>
+
 #include "pumApp.h"
 #include "resource.h"
 
@@ -15,10 +18,7 @@
 CpumApp theApp;
 
 
-int PASCAL WinMain(HINSTANCE hInstance,
-                   HINSTANCE hPrevInstance,
-                   TCHAR* pCmdLine,
-                   int nCmdShow)
+int main(int argc, char* argv[])
 {
     // Initialize DieselEngine
     {
@@ -42,10 +42,10 @@ int PASCAL WinMain(HINSTANCE hInstance,
         res = theApp.Startup(NULL, &mode, dwStartupFlags);
         if (res != DE_OK)
         {
-            ::MessageBox(NULL,
-                         _T("Failed to start Application"),
-                         _T("Fatal Error"),
-                         MB_ICONHAND | MB_OK | MB_DEFBUTTON1);
+            SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,
+                                     _T("Fatal Error"),
+                                     _T("Failed to start Application"),
+                                     NULL);
             return 0;
         }
 

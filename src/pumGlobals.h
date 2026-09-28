@@ -80,10 +80,7 @@ __forceinline float Angle(float x1, float y1, float x2, float y2)
 
 __forceinline void RoundToInt(int* int_pointer, float f)
 {
-    __asm fld f
-    __asm mov edx, int_pointer
-    __asm FRNDINT
-    __asm fistp dword ptr[edx];
+    *int_pointer = (int)lrintf(f);
 }
 
 #endif

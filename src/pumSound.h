@@ -29,7 +29,7 @@ public:
     void LoadSoundScript(const char* f);
     void GetMusics();
     void UpdateVolume();
-    void SlowTime(int defaultfreq);
+    void SlowTime();
 
     CPumSoundSystem(SDE_PUMOPTIONS* opt);
     ~CPumSoundSystem();

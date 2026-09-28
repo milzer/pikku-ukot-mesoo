@@ -171,7 +171,7 @@ void LilChar(int x, int y, char c, DWORD col, DWORD* pSrf)
 
 }
 
-void LilStringCentered(int x, int y, char* s, DWORD col, DWORD* pSrf)
+void LilStringCentered(int x, int y, const char* s, DWORD col, DWORD* pSrf)
 {
     int i, l;
 
@@ -185,7 +185,7 @@ void LilStringCentered(int x, int y, char* s, DWORD col, DWORD* pSrf)
     }
 }
 
-void LilString(int x, int y, char* s, DWORD col, DWORD* pSrf)
+void LilString(int x, int y, const char* s, DWORD col, DWORD* pSrf)
 {
     int i, l;
 
@@ -197,7 +197,7 @@ void LilString(int x, int y, char* s, DWORD col, DWORD* pSrf)
     }
 }
 
-void LilStringR(int x, int y, char* s, DWORD col, DWORD* pSrf)
+void LilStringR(int x, int y, const char* s, DWORD col, DWORD* pSrf)
 {
     int i, l;
 
@@ -211,7 +211,7 @@ void LilStringR(int x, int y, char* s, DWORD col, DWORD* pSrf)
     }
 }
 
-void LilStringCenterX(int y, char* s, DWORD col, DWORD* pSrf)
+void LilStringCenterX(int y, const char* s, DWORD col, DWORD* pSrf)
 {
     int i, l, x;
 
@@ -224,7 +224,7 @@ void LilStringCenterX(int y, char* s, DWORD col, DWORD* pSrf)
     }
 }
 
-void LilStringCenterXo(int y, char* s, DWORD col, DWORD* pSrf)
+void LilStringCenterXo(int y, const char* s, DWORD col, DWORD* pSrf)
 {
     int l, x;
 
