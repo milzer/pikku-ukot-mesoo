@@ -258,7 +258,7 @@ void CpumApp::OnFlip()
         muzik = 0.0f;
     }
 
-    m_SysPtr.Sound->SlowTime(m_GlobalOptions.SoundFrequency);
+    m_SysPtr.Sound->SlowTime();
 
     switch (GameState)
     {
@@ -425,7 +425,7 @@ int CpumApp::MainMenu(float* a)
     int i, j;
     RECT r;
 
-    char* InfoText[9] =
+    const char* InfoText[9] =
     {
         "pikku-ukot mesoo v1.0",
         "kopyrikht (c) 10tons entertainment 2001",
@@ -1090,10 +1090,10 @@ void CpumApp::Blur(DWORD* ptr, int c)
 DE_RETVAL CpumApp::GetLevels()
 {
     struct _finddata_t fblock;
-    long h = 0,
-            i = 0;
+    intptr_t h = 0;
+    long i = 0;
 
-    h = _findfirst("plv\\*.plv", &fblock);
+    h = _findfirst("plv/*.plv", &fblock);
 
     if (h == -1)
     {
@@ -1111,17 +1111,17 @@ DE_RETVAL CpumApp::GetLevels()
 
     m_LevelList = new char* [m_Levels];
 
-    h = _findfirst("plv\\*.plv", &fblock);
+    h = _findfirst("plv/*.plv", &fblock);
 
     m_LevelList[i] = new char[strlen(fblock.name) + 5];
-    strcpy(m_LevelList[i], "plv\\");
+    strcpy(m_LevelList[i], "plv/");
     strcat(m_LevelList[i], fblock.name);
     i++;
 
     while (_findnext(h, &fblock) == 0)
     {
         m_LevelList[i] = new char[strlen(fblock.name) + 5];
-        strcpy(m_LevelList[i], "plv\\");
+        strcpy(m_LevelList[i], "plv/");
         strcat(m_LevelList[i], fblock.name);
         i++;
     }
@@ -1140,7 +1140,7 @@ void CpumApp::CompileLevels()
                 gfx[256],
                 tmp[256];
 
-    fp = fopen("uudet\\lista.txt", "rt");
+    fp = fopen("uudet/lista.txt", "rt");
     if (!fp)
     {
         return;
@@ -1148,9 +1148,9 @@ void CpumApp::CompileLevels()
 
     while (!feof(fp))
     {
-        strcpy(bg, "uudet\\");
-        strcpy(gfx, "uudet\\");
-        strcpy(plv, "plv\\");
+        strcpy(bg, "uudet/");
+        strcpy(gfx, "uudet/");
+        strcpy(plv, "plv/");
 
         if (fscanf(fp, "%s", tmp) == EOF)
         {

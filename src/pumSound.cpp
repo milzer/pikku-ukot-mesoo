@@ -66,9 +66,21 @@ CPumSoundSystem::~CPumSoundSystem()
     FSOUND_Close();
 }
 
-void CPumSoundSystem::SlowTime(int defaultfreq)
+void CPumSoundSystem::SlowTime()
 {
-    FSOUND_SetFrequency(FSOUND_ALL, (int)((float)defaultfreq * globalMatrixTime));
+    int c, freq;
+    FSOUND_SAMPLE* s;
+
+    // FSOUND_SetFrequency takes an absolute rate, so scale each channel from its own sample's rate
+    for (c = 0; c < FSOUND_GetMaxChannels(); c++)
+    {
+        s = FSOUND_GetCurrentSample(c);
+        if (s)
+        {
+            FSOUND_Sample_GetDefaults(s, &freq, NULL, NULL, NULL);
+            FSOUND_SetFrequency(c, (int)((float)freq * globalMatrixTime));
+        }
+    }
 }
 
 void CPumSoundSystem::UpdateMusic()
@@ -199,7 +211,7 @@ void CPumSoundSystem::PlaySample(int id, int x)
     }
     x = (int)((float)x * 0.797f);
 
-// FSOUND_PlaySound3DAttrib(FSOUND_FREE, m_Sample[id], -1, -1, x, NULL, NULL);
+    FSOUND_PlaySound3DAttrib(FSOUND_FREE, m_Sample[id], -1, -1, x, NULL, NULL);
 }
 
 void CPumSoundSystem::PlaySample(int id1, int id2, int x)
@@ -222,7 +234,7 @@ void CPumSoundSystem::PlaySample(int id1, int id2, int x)
     }
     x = (int)((float)x * 0.797f);
 
-// FSOUND_PlaySound3DAttrib(FSOUND_FREE, m_Sample[ RandInt( id1, id2 ) ], -1, -1, x, NULL, NULL);
+    FSOUND_PlaySound3DAttrib(FSOUND_FREE, m_Sample[RandInt(id1, id2)], -1, -1, x, NULL, NULL);
 }
 
 void CPumSoundSystem::LoadSoundScript(const char* f)
@@ -256,10 +268,10 @@ void CPumSoundSystem::LoadSoundScript(const char* f)
 void CPumSoundSystem::GetMusics()
 {
     struct _finddata_t fblock;
-    long h = 0,
-            i = 0;
+    intptr_t h = 0;
+    long i = 0;
 
-    h = _findfirst("musiq\\*.mus", &fblock);
+    h = _findfirst("musiq/*.mus", &fblock);
 
     if (h == -1)
     {
@@ -285,17 +297,17 @@ void CPumSoundSystem::GetMusics()
 
     i = 0;
 
-    h = _findfirst("musiq\\*.mus", &fblock);
+    h = _findfirst("musiq/*.mus", &fblock);
 
     m_SongList[i] = new char[strlen(fblock.name) + 7];
-    strcpy(m_SongList[i], "musiq\\");
+    strcpy(m_SongList[i], "musiq/");
     strcat(m_SongList[i], fblock.name);
     i++;
 
     while (_findnext(h, &fblock) == 0)
     {
         m_SongList[i] = new char[strlen(fblock.name) + 7];
-        strcpy(m_SongList[i], "musiq\\");
+        strcpy(m_SongList[i], "musiq/");
         strcat(m_SongList[i], fblock.name);
         i++;
     }
