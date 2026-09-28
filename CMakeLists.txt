@@ -62,6 +62,7 @@ add_executable(pum WIN32
     src/Main.cpp
     src/pumApp.cpp
     src/pumGlobals.cpp
+    src/pumLanguage.cpp
     src/pumLevel.cpp
     src/pumLilfont.cpp
     src/pumParticle.cpp

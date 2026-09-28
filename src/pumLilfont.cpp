@@ -1,4 +1,5 @@
 #include "pumLilfont.h"
+#include "pumLanguage.h"
 
 unsigned char szLilFontData[1280] =
 {
@@ -175,6 +176,7 @@ void LilStringCentered(int x, int y, const char* s, DWORD col, DWORD* pSrf)
 {
     int i, l;
 
+    s = Translate(s);
     l = strlen(s);
 
     x -= (l * 5 / 2);
@@ -189,6 +191,7 @@ void LilString(int x, int y, const char* s, DWORD col, DWORD* pSrf)
 {
     int i, l;
 
+    s = Translate(s);
     l = strlen(s);
 
     for (i = 0; i < l; i++)
@@ -201,6 +204,7 @@ void LilStringR(int x, int y, const char* s, DWORD col, DWORD* pSrf)
 {
     int i, l;
 
+    s = Translate(s);
     l = strlen(s);
 
     x -= l * 5;
@@ -215,6 +219,7 @@ void LilStringCenterX(int y, const char* s, DWORD col, DWORD* pSrf)
 {
     int i, l, x;
 
+    s = Translate(s);
     l = strlen(s);
     x = 160 - (l * 5 / 2);
 
@@ -228,6 +233,7 @@ void LilStringCenterXo(int y, const char* s, DWORD col, DWORD* pSrf)
 {
     int l, x;
 
+    s = Translate(s);
     l = strlen(s);
     x = 160 - (l * 5 / 2);
 
