@@ -84,7 +84,11 @@ Default controls (left, right, aim up, aim down, change weapon, jump, shoot):
 | 2 | `S` `F` `E` `D`, left shift, tab, `Q` |
 | 3 | `J` `L` `I` `K`, `O`, `Y`, `H` |
 
-Keys can be changed in the options menu under *muuta nappulat*.
+Keys can be changed in the options menu under *muuta nappulat* (*change keys*).
+
+### Language
+
+The game was written in Finnish. It shows its text in English unless your system language is Finnish; set `PUM_LANG=fi` or `PUM_LANG=en` to choose. The translation lives in `src/pumLanguage.cpp`, keyed by the original Finnish strings, and tries to keep the original's playful spelling.
 
 ## Contributing
 
