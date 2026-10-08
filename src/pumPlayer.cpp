@@ -445,9 +445,9 @@ void CPumPlayer::LoadKeys(int i)
 int CPumPlayer::CheckBHit(float fofsx, float fofsy, DWORD* pSrf)
 {
     int x,
-            y,
-            tmpXpos,
-            tmpYpos;
+        y,
+        tmpXpos,
+        tmpYpos;
     DWORD* gptr = m_Gfx[m_Frame];
 
     RoundToInt(&tmpXpos, m_fXpos + fofsx);
@@ -493,7 +493,7 @@ int CPumPlayer::CheckBHit(float fofsx, float fofsy, DWORD* pSrf)
 void CPumPlayer::Draw(DWORD* pSrf)
 {
     int x,
-            y;
+        y;
     DWORD* gptr = m_Gfx[m_Frame];
 
     if (m_Alive == FALSE)
@@ -536,7 +536,7 @@ int CPumPlayer::HitB(CPumBullet* d)
 {
     float fd;
     int i, id,
-            x, y;
+        x, y;
 
     if (m_Alive == FALSE)
     {

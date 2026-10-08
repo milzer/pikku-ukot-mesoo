@@ -245,9 +245,9 @@ void CpumApp::OnFlip()
 {
     enum GAMESTATE { eGame, eMainmenu, eOptions, eGameexit, eSetupkeys };
     static int GameState = eMainmenu,
-                    tmp;
+               tmp;
     static float muzik = 10.0f,
-                    ang;
+                 ang;
 
     ang += m_fFrameTime * TimeFactor;
 
@@ -420,7 +420,7 @@ int CpumApp::MainMenu(float* a)
 {
     static int info = 0;
     static float keydelay = 0.0f,
-                    infodelay = 4.0f;
+                 infodelay = 4.0f;
     DWORD* ptr;
     int i, j;
     RECT r;
@@ -513,7 +513,7 @@ int CpumApp::OptionsMenu(float* a)
     static float keydelay = 0.1f;
     DWORD* ptr;
     int i, j,
-            kei = 0;
+        kei = 0;
     RECT r;
     char buf[64];
 
@@ -1136,9 +1136,9 @@ void CpumApp::CompileLevels()
     CPumLevel* l;
     FILE* fp;
     char plv[256],
-                bg[256],
-                gfx[256],
-                tmp[256];
+         bg[256],
+         gfx[256],
+         tmp[256];
 
     fp = fopen("uudet/lista.txt", "rt");
     if (!fp)
@@ -1183,4 +1183,3 @@ void CpumApp::CompileLevels()
 //////////////////////////////////////////////////////////////////////
 // Overrided Message handlers
 //////////////////////////////////////////////////////////////////////
-

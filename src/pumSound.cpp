@@ -240,7 +240,7 @@ void CPumSoundSystem::PlaySample(int id1, int id2, int x)
 void CPumSoundSystem::LoadSoundScript(const char* f)
 {
     int c = 0,
-            i;
+        i;
     char* tmp;
     FILE* fp;
 

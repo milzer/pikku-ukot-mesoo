@@ -82,7 +82,7 @@ inline int CPumParticle::Update(float frameTime)
     CHAR pix;
 
     float fXOpos = m_fXpos,
-            fYOpos = m_fYpos;
+          fYOpos = m_fYpos;
 
     m_TTL--;
 

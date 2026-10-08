@@ -211,7 +211,7 @@ int CPumBullet::Update(float frameTime)
 {
     CHAR pix;
     float fXOpos = m_fXpos,
-            fYOpos = m_fYpos;
+          fYOpos = m_fYpos;
 
     m_TTL--;
 
@@ -261,7 +261,7 @@ int CPumBullet::Update(float frameTime)
             if (m_SeekTimer < 0.0f)
             {
                 float l = 999999.0f,
-                                ltmp;
+                      ltmp;
                 int i;
                 CDieselVector2 tmpvec;
                 tmpvec.Set(0.0f, 0.0f);
