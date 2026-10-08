@@ -5,7 +5,6 @@
 #include "pumGlobals.h"
 #include "pumSound.h"
 #include "pumLevel.h"
-//#include "list.h"
 
 extern DWORD ParticlePalette[256];
 

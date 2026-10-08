@@ -149,8 +149,6 @@ void CPumBullet::Activate(float frameTime)
                     invl = 1.0f / l;
                 }
 
-                // (1/et�isyys*21)*(blow/20)*(blow)
-
                 tmpvec.Normalize();
                 tmpvec.Mul(invl * TimeFactor / 2);
 
@@ -298,11 +296,6 @@ int CPumBullet::Update(float frameTime)
         }
     }
 
-    /*
-    #define WPN_EFF_SPARKBACK   0x0100
-    #define WPN_EFF_SPARKS      0x0400
-    */
-
     if (m_Flags & WPN_EFF_SPARKBACK)
     {
         SpawnParticles(_PRT_SPARK, m_fXpos, m_fYpos, Angle(m_Vec.x, m_Vec.y, 0, 0), 32.0f, 0.5f * TimeFactor,
@@ -439,10 +432,6 @@ void CPumBullet::Create(float x, float y, float angle, CPumWeapon* w, CPumSysPoi
     m_SP = sp;
 }
 
-
-// --------------------------------------------------------------------------
-// --------------------------------------------------------------------------
-// --------------------------------------------------------------------------
 
 CPumWeapon* CPumWeaponSystem::FindWeapon(const char* n)
 {

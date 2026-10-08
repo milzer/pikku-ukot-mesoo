@@ -72,7 +72,7 @@ inline void CPumParticle::Create(float x, float y, float i, float j, float accel
     if (m_Flags & PRT_GIB)
     {
         m_Countfreq = (rand() & 15) - 4;
-        m_Misc = (float)(rand() & 127) / 630.0f; // 653;
+        m_Misc = (float)(rand() & 127) / 630.0f;
     }
 }
 
@@ -204,13 +204,13 @@ inline int CPumParticle::Update(float frameTime)
                         m_Flags |= (PRT_DIEONHIT | PRT_DRAWBACK);
                     }
                     m_Countfreq += rand() & 7;
-                    m_Misc = (float)(rand() & 127) / 630.0f; // 653;
+                    m_Misc = (float)(rand() & 127) / 630.0f;
                 }
 
                 if (m_Flags & PRT_SPARK)
                 {
                     WallBounce(&m_Vec, m_iXpos, m_iYpos, m_SP->Level->m_szMask, frameTime);
-                    m_Vec.Mul(RandFloat(0.00f, 0.07f)); // 0.05f
+                    m_Vec.Mul(RandFloat(0.00f, 0.07f));
                     m_TTL -= 20;
                 }
 
@@ -364,8 +364,6 @@ inline void CPumParticle::DrawBlended(DWORD* pSurface)
 
         pSurface[p] = (r << 16) | (g << 8) | b;
 
-// --------------------------------------------------------
-
         r = g = b = pSurface[p - 1];
         r = (r & 0x00ff0000) >> 16;
         g = (g & 0x0000ff00) >> 8;
@@ -390,8 +388,6 @@ inline void CPumParticle::DrawBlended(DWORD* pSurface)
 
         pSurface[p - 1] = (r << 16) | (g << 8) | b;
 
-// --------------------------------------------------------
-
         r = g = b = pSurface[p + 1];
         r = (r & 0x00ff0000) >> 16;
         g = (g & 0x0000ff00) >> 8;
@@ -415,8 +411,6 @@ inline void CPumParticle::DrawBlended(DWORD* pSurface)
         }
 
         pSurface[p + 1] = (r << 16) | (g << 8) | b;
-// --------------------------------------------------------
-
         r = g = b = pSurface[p - ScreenWidth];
         r = (r & 0x00ff0000) >> 16;
         g = (g & 0x0000ff00) >> 8;
@@ -440,8 +434,6 @@ inline void CPumParticle::DrawBlended(DWORD* pSurface)
         }
 
         pSurface[p - ScreenWidth] = (r << 16) | (g << 8) | b;
-// --------------------------------------------------------
-
         r = g = b = pSurface[p + ScreenWidth];
         r = (r & 0x00ff0000) >> 16;
         g = (g & 0x0000ff00) >> 8;
@@ -470,10 +462,6 @@ inline void CPumParticle::DrawBlended(DWORD* pSurface)
 
 }
 
-
-// --------------------------------------------------------------------------
-// --------------------------------------------------------------------------
-// --------------------------------------------------------------------------
 
 CPumParticleSystem::CPumParticleSystem(const int i)
 {
@@ -583,11 +571,6 @@ void CPumParticleSystem::DrawBlended(DWORD* pSurface)
         }
     }
 }
-
-
-// --------------------------------------------------------------------------
-// --------------------------------------------------------------------------
-// --------------------------------------------------------------------------
 
 
 void SpawnParticles(int type, float x, float y, float angle, float spread,

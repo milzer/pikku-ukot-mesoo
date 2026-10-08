@@ -1,13 +1,3 @@
-//////////////////////////////////////////////////////////////////////
-// pumApp.h: interface for the CpumApp class.
-// Date: 8.6.2001
-//
-// Created by Diesel Application Wizard (c) 2000 Inmar Software Ltd.
-//
-//
-//////////////////////////////////////////////////////////////////////
-
-
 #ifndef __PUMAPP_H__
 #define __PUMAPP_H__
 
@@ -38,18 +28,15 @@ public:
     DE_RETVAL GetLevels();
     void CompileLevels();
 
-    // construction & destruction
     CpumApp();
     virtual ~CpumApp();
 
-    // pure virtual function override
     void OnFlip();
 
     CDieselInput m_Input;
     CDieselInputKeyboard m_Keyboard;
     CDieselInputMouse m_Mouse;
 
-    // Overrided virtual functions
     DE_RETVAL OnInitDone();
     void OnExit();
 
@@ -74,5 +61,4 @@ protected:
 
 };
 
-#endif // ifndef __PUMAPP_H__
-
+#endif

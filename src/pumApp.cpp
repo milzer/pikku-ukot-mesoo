@@ -1,17 +1,8 @@
-// pumApp.cpp: implementation of the CpumApp class.
-//
-//////////////////////////////////////////////////////////////////////
-
 #include "pumApp.h"
 #include "io.h"
 #include "resource.h"
 
 float globalMatrixTime = 1.0f;
-
-//////////////////////////////////////////////////////////////////////
-// Construction/Destruction
-//////////////////////////////////////////////////////////////////////
-
 
 CpumApp::CpumApp()
 {
@@ -24,9 +15,6 @@ CpumApp::~CpumApp()
 }
 
 
-// OnInitDone()
-// Called by DieselEngine, when all initialization is done
-// if return value is FAILED, engine will clean up and close
 DE_RETVAL CpumApp::OnInitDone()
 {
     DE_RETVAL res = DE_OK;
@@ -187,9 +175,6 @@ void CpumApp::ResetGame(int l)
     m_SysPtr.Level = m_Level;
 }
 
-// OnExit()
-// Called by DieselEngine, just before it cleans up
-// this is good place to clean up your resources
 void CpumApp::OnExit()
 {
     int i;
@@ -235,12 +220,6 @@ void CpumApp::OnExit()
 }
 
 
-//////////////////////////////////////////////////////////////////////
-// Updating
-//////////////////////////////////////////////////////////////////////
-
-// OnFlip()
-// Application main loop
 void CpumApp::OnFlip()
 {
     enum GAMESTATE { eGame, eMainmenu, eOptions, eGameexit, eSetupkeys };
@@ -336,7 +315,6 @@ int CpumApp::GameLoop()
 
         if (m_Keyboard.GetButton(DIK_ESCAPE, NULL) == TRUE)
         {
-            // Device button 'Start' is down...shutdown the application
             return (0);
         }
     }
@@ -388,16 +366,6 @@ int CpumApp::GameLoop()
         m_Player[i].Draw(ptr);
     }
 
-    /*
-    #ifdef _DEBUG
-        char buffer[32];
-
-        sprintf(buffer, "%.0f ", GetFps());
-        LilString( 0, 0, buffer, 0x00ffffff, ptr );
-        _stprintf(buffer, "%.2f ", m_fFrameTime);
-        LilString( 0, 6, buffer, 0x00ffffff, ptr );
-    #endif
-    */
 
     m_Backbuffer.Unlock();
 
@@ -1178,8 +1146,3 @@ void CpumApp::CompileLevels()
 
     fclose(fp);
 }
-
-
-//////////////////////////////////////////////////////////////////////
-// Overrided Message handlers
-//////////////////////////////////////////////////////////////////////
